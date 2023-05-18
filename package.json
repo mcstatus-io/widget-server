@@ -1,0 +1,33 @@
+{
+	"name": "widget-server",
+	"version": "1.0.0",
+	"description": "The server that generates widget images using server status information.",
+	"main": "src/index.js",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"start": "node .",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/mcstatus-io/widget-server.git"
+	},
+	"author": "Jacob Gunther",
+	"license": "UNLICENSED",
+	"bugs": {
+		"url": "https://github.com/mcstatus-io/widget-server/issues"
+	},
+	"homepage": "https://github.com/mcstatus-io/widget-server#readme",
+	"dependencies": {
+		"@fastify/etag": "^4.2.0",
+		"canvas": "^2.11.2",
+		"dotenv": "^16.0.3",
+		"fastify": "^4.17.0",
+		"humanize-duration": "^3.28.0",
+		"superagent": "^8.0.9"
+	},
+	"devDependencies": {
+		"eslint": "^8.40.0"
+	}
+}
