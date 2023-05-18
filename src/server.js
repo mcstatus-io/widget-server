@@ -3,11 +3,13 @@ import etag from '@fastify/etag';
 import { getJavaStatus, parseQueryOptions } from './util.js';
 import { generateJavaWidget } from './widget.js';
 
-export default async () => {
+export const host = () => process.env.HOST || '127.0.0.1';
+export const port = () => isNaN(process.env.PORT) ? 3000 : parseInt(process.env.PORT);
+
+export const launchServer = async () => {
 	const app = fastify();
 
 	app.register(etag);
-
 
 	app.get('/ping', (req, res) => {
 		res.status(200).send('OK');
@@ -32,5 +34,5 @@ export default async () => {
 		res.status(404).send('Not Found');
 	});
 
-	return app.listen({ host: process.env.HOST || '127.0.0.1', port: isNaN(process.env.PORT) ? 3000 : parseInt(process.env.PORT) });
+	return app.listen({ host: host(), port: port() });
 };
