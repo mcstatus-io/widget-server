@@ -4,7 +4,7 @@ import { getJavaStatus, parseQueryOptions } from './util.js';
 import { generateJavaWidget } from './widget.js';
 
 export const host = () => process.env.HOST || '127.0.0.1';
-export const port = () => isNaN(process.env.PORT) ? 3000 : parseInt(process.env.PORT);
+export const port = () => (isNaN(process.env.PORT) ? 3000 : parseInt(process.env.PORT)) + (isNaN(process.env.INSTANCE_ID) ? 0 : parseInt(process.env.INSTANCE_ID));
 
 export const launchServer = async () => {
 	const app = fastify();
