@@ -9,7 +9,7 @@ export const getJavaStatus = async (address) => {
 };
 
 export const parseQueryOptions = (req) => {
-	const options = { rounded: true, dark: true };
+	const options = { rounded: true, dark: true, border: true };
 
 	if (typeof req.query.dark === 'string' && req.query.dark.toLowerCase() === 'false') {
 		options.dark = false;
@@ -17,6 +17,10 @@ export const parseQueryOptions = (req) => {
 
 	if (typeof req.query.rounded === 'string' && req.query.rounded.toLowerCase() === 'false') {
 		options.rounded = false;
+	}
+
+	if (typeof req.query.border === 'string' && req.query.border.toLowerCase() === 'false') {
+		options.border = false;
 	}
 
 	return options;

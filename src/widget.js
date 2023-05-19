@@ -5,7 +5,7 @@ import humanizeDuration from 'humanize-duration';
 
 const CANVAS_WIDTH = 860;
 const CANVAS_HEIGHT = 240;
-const TEXT_OFFSET_Y = 65;
+const TEXT_OFFSET_Y = 62;
 
 let defaultIconImage;
 
@@ -38,15 +38,19 @@ export const generateJavaWidget = async (status, options) => {
 	// Background
 	{
 		ctx.beginPath();
-		ctx.fillStyle = options.dark ? '#191919' : '#FFFFFF';
+		ctx.fillStyle = options.dark ? '#232323' : '#F2F2F2';
+		ctx.strokeStyle = options.dark ? '#3A3A3A' : '#D9D9D9';
+		ctx.lineWidth = 5;
 
 		if (options.rounded) {
-			ctx.roundRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT, 16);
+			ctx.roundRect(2, 2, CANVAS_WIDTH - 4, CANVAS_HEIGHT - 4, 16);
 		} else {
 			ctx.rect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 		}
 
 		ctx.fill();
+
+		if (options.border) ctx.stroke();
 	}
 
 	// Icon
