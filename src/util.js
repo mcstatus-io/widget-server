@@ -1,7 +1,7 @@
 import superagent from 'superagent';
 
 export const getJavaStatus = async (address) => {
-	const result = await superagent.get(`${process.env.PING_HOST || 'https://api.mcstatus.io/v2'}/status/java/${encodeURIComponent(address)}`);
+	const result = await superagent.get(`${process.env.PING_HOST || 'https://api.mcstatus.io/v2'}/status/java/${address}`);
 
 	if (result.status !== 200) throw new Error('Unexpected status code: ' + result.status);
 
