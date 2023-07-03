@@ -22,12 +22,12 @@
 	"dependencies": {
 		"@fastify/etag": "^4.2.0",
 		"canvas": "^2.11.2",
-		"dotenv": "^16.0.3",
-		"fastify": "^4.17.0",
+		"dotenv": "^16.3.1",
+		"fastify": "^4.19.1",
 		"humanize-duration": "^3.28.0",
 		"superagent": "^8.0.9"
 	},
 	"devDependencies": {
-		"eslint": "^8.40.0"
+		"eslint": "^8.44.0"
 	}
 }
