@@ -16,6 +16,8 @@ export const launchServer = async () => {
 	});
 
 	app.get('/java/:address', async (req, res) => {
+		if (req.params.address.length < 1) return res.status(404).send('Not Found');
+
 		const options = parseQueryOptions(req);
 
 		const status = await getJavaStatus(req.params.address);
