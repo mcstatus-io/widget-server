@@ -1,5 +1,7 @@
 import superagent from 'superagent';
 
+const validHostRegEx = /^[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+(:\d{1,5})?$/;
+
 export const getJavaStatus = async (host, port = 25565) => {
     const result = await superagent.get(`${process.env.PING_HOST || 'https://api.mcstatus.io/v2'}/status/java/${host}:${port}`);
 
@@ -9,20 +11,22 @@ export const getJavaStatus = async (host, port = 25565) => {
 };
 
 export const parseAddress = (address, port = 25565) => {
-    const splitAddress = address.split(':');
+    if (!validHostRegEx.test(address)) return null;
 
-    if (splitAddress.length > 2 || splitAddress.length < 1) return null;
+    const splitHost = address.split(':');
 
-    if (splitAddress.length < 2) return {
-        host: splitAddress[0],
+    if (splitHost.length > 2 || splitHost.length < 1) return null;
+
+    if (splitHost.length < 2) return {
+        host: splitHost[0],
         port
     };
 
-    const parsedPort = parseInt(splitAddress[1]);
+    const parsedPort = parseInt(splitHost[1]);
     if (isNaN(parsedPort) || parsedPort < 0 || parsedPort > 65536 || !Number.isInteger(parsedPort)) return null;
 
     return {
-        host: splitAddress[0],
+        host: splitHost[0],
         port: parsedPort
     };
 };
