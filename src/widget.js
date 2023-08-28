@@ -1,6 +1,6 @@
 import path from 'path';
+import { createCanvas, loadImage, registerFont } from 'canvas';
 import fs from 'fs/promises';
-import { createCanvas, registerFont, loadImage } from 'canvas';
 import humanizeDuration from 'humanize-duration';
 
 const CANVAS_WIDTH = 860;
@@ -33,7 +33,11 @@ export const generateJavaWidget = async (status, options) => {
     const canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
     const ctx = canvas.getContext('2d', { alpha: true });
 
+    console.log('a');
+
     ctx.patternQuality = 'nearest';
+
+    console.log('a');
 
     // Background
     {
@@ -57,8 +61,12 @@ export const generateJavaWidget = async (status, options) => {
     {
         let icon = defaultIconImage;
 
-        if (status.online && status.icon !== null) {
-            icon = await loadImage(status.icon);
+        if (status.online && status.icon !== null && status.icon.length > 0) {
+            try {
+                icon = await loadImage(status.icon);
+            } catch {
+                // Ignore
+            }
         }
 
         ctx.drawImage(icon, (CANVAS_HEIGHT - 192) / 2, (CANVAS_HEIGHT - 192) / 2, 192, 192);
