@@ -33,11 +33,7 @@ export const generateJavaWidget = async (status, options) => {
     const canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
     const ctx = canvas.getContext('2d', { alpha: true });
 
-    console.log('a');
-
     ctx.patternQuality = 'nearest';
-
-    console.log('a');
 
     // Background
     {
