@@ -23,11 +23,11 @@
 		"@fastify/etag": "^4.2.0",
 		"canvas": "^2.11.2",
 		"dotenv": "^16.3.1",
-		"fastify": "^4.19.2",
-		"humanize-duration": "^3.29.0",
-		"superagent": "^8.0.9"
+		"fastify": "^4.24.3",
+		"humanize-duration": "^3.31.0",
+		"superagent": "^8.1.2"
 	},
 	"devDependencies": {
-		"eslint": "^8.45.0"
+		"eslint": "^8.53.0"
 	}
 }
